@@ -9,7 +9,7 @@ fn main() {
     let diagram = "vertex photon1 photon2 axion
 vertex point
 
-axion -> pointSD
+axion -> point
 point ~p~ photon1
 point ~p~ photon2
 ";
