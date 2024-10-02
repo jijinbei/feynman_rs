@@ -11,7 +11,9 @@ w_boson  = @{ "~W~" }
 gluon    = @{ "~g~" }
 graviton = @{ "~G~" }
 
-arrow = _{ fermion | photon | z_boson | w_boson | gluon | graviton }
+higgs_boson = { "~H~" }
+
+arrow = _{ fermion | photon | z_boson | w_boson | gluon | graviton | higgs_boson }
 
 identifier = @{ ASCII_ALPHANUMERIC+ }
 
