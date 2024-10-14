@@ -1,10 +1,11 @@
 WHITESPACE = _{ " " | "\t" }
 NEWLINE    = _{ "\n" | "\r\n" }
 
-vertex      = { "vertex " ~ identifier+ }
-interaction = { identifier ~ arrow ~ identifier }
+external_line = { "exterline " ~ (line ~ ("," ~ line)+ | line) }
+vertex_point  = { "vertex " ~ (vertex ~ ("," ~ vertex)+ | vertex) }
+interaction   = { vertex ~ (arrow ~ vertex)+ }
 
-fermion  = @{ "->" | "<-" }
+fermion  = @{ "->" | "--" }
 photon   = @{ "~p~" }
 z_boson  = @{ "~Z~" }
 w_boson  = @{ "~W~" }
@@ -15,6 +16,7 @@ higgs_boson = { "~H~" }
 
 arrow = _{ fermion | photon | z_boson | w_boson | gluon | graviton | higgs_boson }
 
-identifier = @{ ASCII_ALPHANUMERIC+ }
+vertex = @{ ASCII_ALPHA+ ~ ASCII_ALPHANUMERIC* }
+line   = @{ ASCII_ALPHA+ ~ ASCII_ALPHANUMERIC* }
 
-diagram = { ((vertex | interaction) ~ NEWLINE+)+ }
+diagram = { (NEWLINE* ~ (external_line | vertex_point | interaction) ~ ";")+ }

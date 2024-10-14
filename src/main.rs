@@ -6,12 +6,13 @@ use pest_derive::Parser;
 pub struct FeynmanParser;
 
 fn main() {
-    let diagram = "vertex photon1 photon2 axion
-vertex point
+    let diagram = "
+    exterline e1, e2, mu1, mu2;
+    vertex a, b;
 
-axion -> point
-point ~p~ photon1
-point ~p~ photon2
+    e1 -> a ~p~ b -> mu1;
+    e2 -> a;
+    b -> mu2;
 ";
 
     let successful_parse = FeynmanParser::parse(Rule::diagram, diagram).unwrap();
